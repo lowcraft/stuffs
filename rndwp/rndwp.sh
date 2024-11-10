@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# script: rndwp.sh
+# name: Random Wallpapers
+# description: Change randomly wallpaper on Gnome Desktop
 # author: boa <boa@weboa.org>
 # date: 2024/11/10
 # version: 0.1
+# bugs: 
+# 1	sometime, black screen appear, must fix it!
+# 2	no check of the current wallpaper used 
 
 _path=$HOME/Images/Wallpapers
 _files=( $(ls $_path | sort -R) )
