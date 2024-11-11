@@ -14,13 +14,14 @@
 # mod:
 # 3	change (temporary) Gnome notification
 
-_path=$HOME/Images/Wallpapers
-_files=( $(ls $_path | sort -R) )
-_max=${#_files[@]}
-_random=$((0 + RANDOM % $_max))
-_image=${_files[_random]}
-_tmp=`gsettings get org.gnome.desktop.background picture-uri | tr -d "'"`
-_current=`basename $_tmp`
+_history=0 # number of historical images to ignore (not yet implented)
+_path=$HOME/Images/Wallpapers # The wallpaper folder
+_files=( $(ls $_path | sort -R) ) # Get the list of files sorted randomly
+_max=${#_files[@]} # Get the number of files
+_random=$((0 + RANDOM % $_max)) # Get random number
+_image=${_files[_random]} # Get a random image
+_tmp=`gsettings get org.gnome.desktop.background picture-uri | tr -d "'"` # Get the current wallpaper image before change (futur release)
+_current=`basename $_tmp` # Get only the filename (futur release)
 
 gsettings set org.gnome.desktop.background picture-uri "file://$_path/$_image"
 # notify-send "Change wallpaper to ${_image}" -a "Wallpaper Randomize Change" -t 200 -w # 3
